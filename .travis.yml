@@ -1,22 +1,8 @@
-language: c++
+language: java
 
-matrix:
-  include:
-    - os: linux
-      addons:
-        apt:
-          sources:
-            - ubuntu-toolchain-r-test
-          packages:
-            - g++-6
-      env:
-        - MATRIX_EVAL="CC=gcc-6 && CXX=g++-6"
-
-before_install:
-  - eval "${MATRIX_EVAL}"
-
-script:
- - $CXX main.cpp
- - ./a.out gutenberg/whitman-leaves.txt
- - ./a.out gutenberg/shakespeare-macbeth.txt
- - ./a.out gutenberg/austen-emma.txt
+script: 
+ - javac Bigrams.java
+ - java Bigrams gutenberg/austen-emma.txt
+ - java Bigrams gutenberg/blake-poems.txt
+ - java Bigrams gutenberg/shakespeare-macbeth.txt
+ - java Bigrams gutenberg/melville-moby_dick.txt
